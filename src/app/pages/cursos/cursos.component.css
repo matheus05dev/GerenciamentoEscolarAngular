@@ -1,0 +1,24 @@
+header {
+  display: flex;
+  color: var(--font-color);
+  margin-bottom: 0.8rem;
+
+  h1 {
+    flex-grow: 1;
+    text-align: center;
+  }
+
+  button {
+    background-color: var(--terciary);
+
+    mat-icon {
+      color: var(--font-color);
+    }
+  }
+}
+
+.cartoes{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+  gap: 10px;
+}

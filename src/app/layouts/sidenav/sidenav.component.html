@@ -1,0 +1,33 @@
+<mat-toolbar class="toolbar">
+    <button mat-icon-button (click)="drawer.toggle()">
+        <mat-icon>menu</mat-icon>
+    </button>
+    <span>Gerenciamento Escolar</span>
+    <span class="spacer"></span>
+    <button mat-icon-button>
+        <mat-icon>account_box</mat-icon>
+    </button>
+</mat-toolbar>
+<mat-drawer-container class="container" autosize>
+    <mat-drawer #drawer class="sidenav" mode="side">
+        <ul class="sidenav-list">
+            <li routerLink= "/home">
+                <mat-icon>home</mat-icon>
+                <span>Home</span>
+            </li>
+            <li routerLink= "/cursos">
+                <mat-icon>school</mat-icon>
+                <span>Cursos</span>
+            </li>
+            <li routerLink= "/alunos">
+                <mat-icon>person</mat-icon>
+                <span>Alunos</span>
+            </li>
+        </ul>
+    </mat-drawer>
+
+    <div class="sidenav-content">
+        <router-outlet></router-outlet>
+    </div>
+
+</mat-drawer-container>

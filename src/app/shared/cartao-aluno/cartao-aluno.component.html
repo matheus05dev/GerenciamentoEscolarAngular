@@ -1,0 +1,31 @@
+<div class="cartao">
+  <div class="cartao-cabecalho">
+    <span>{{aluno.curso.titulo}}</span>
+    <button mat-icon-button [matMenuTriggerFor]="menu" class="cartao-menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item  (click)="deletarAluno()">
+        <mat-icon>delete_forever</mat-icon>
+        <span>Apagar</span>
+      </button>
+      <button mat-menu-item>
+        <mat-icon>create</mat-icon>
+        <span>Editar</span>
+      </button>
+      <button mat-menu-item (click)="carregarImagem.click()">
+        <mat-icon>add_photo_alternated</mat-icon>
+        <span>Carregar imagem</span>
+        <input #carregarImagem type="file" (change)="salvarImagem($event)" accept="image/*" hidden>
+      </button>
+    </mat-menu>
+
+  </div>
+  <img class="cartao-imagem"
+    [src]="aluno.imagemUrl"
+    alt="cartao-detalhes">
+  <div class="cartao-detalhes">
+    <h2>{{aluno.nome}}</h2>
+    <h3>{{aluno.matricula}}</h3>
+  </div>
+</div>

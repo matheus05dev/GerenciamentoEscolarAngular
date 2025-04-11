@@ -1,0 +1,63 @@
+form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.button-container {
+  display: flex;
+  align-items: flex-end;
+  gap: 5px;
+  margin-top: 10px;
+  justify-content: flex-end;
+
+  button {
+    color: var(--secundary);
+    background-color: var(--primary);
+  }
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: var(--font-color);
+}
+
+mat-form-field {
+  margin-bottom: 10px;
+}
+
+/* Estilos para o container de formulário com scroll */
+.form-container {
+  max-height: 60vh;
+  overflow-y: auto;
+  padding-right: 10px;
+  margin-bottom: 20px;
+  flex: 1;
+}
+
+/* Estilização da barra de rolagem */
+.form-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.form-container::-webkit-scrollbar-track {
+  background: var(--secundary);
+  border-radius: 10px;
+}
+
+.form-container::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 10px;
+}
+
+.form-container::-webkit-scrollbar-thumb:hover {
+  background: var(--focus);
+}

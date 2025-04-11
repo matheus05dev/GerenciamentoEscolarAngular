@@ -1,0 +1,11 @@
+<header>
+  <h1>Alunos</h1>
+  <button mat-fab (click)="abrirDialogCriarAlunos()">
+    <mat-icon>add</mat-icon>
+  </button>
+</header>
+<section class="cartoes">
+  @for ( aluno of alunos; track aluno.id){
+    <app-cartao-aluno [aluno]="aluno" (alunoDeletado)="BuscarAlunos()"></app-cartao-aluno>
+    }
+</section>

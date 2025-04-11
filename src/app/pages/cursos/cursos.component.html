@@ -1,0 +1,11 @@
+<header>
+  <h1>Cursos</h1>
+  <button mat-fab (click)="abrirDialogCriarCurso()">
+    <mat-icon>add</mat-icon>
+  </button>
+</header>
+<section class="cartoes">
+  @for ( curso of cursos; track curso.id){
+    <app-cartao-curso [curso]="curso" (cursoDeletado)="BuscarCursos()"></app-cartao-curso>
+    }
+</section>

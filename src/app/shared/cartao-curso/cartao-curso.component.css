@@ -1,0 +1,35 @@
+.cartao {
+  width: 100%;
+  height: 100%;
+  background-color: var(--primary);
+  border-radius: 10px;
+
+  .cartao-cabecalho {
+    display: flex;
+    justify-content: space-between;
+    color: var(--font-color);
+    padding: 0.5rem;
+    background-color: var(--terciary);
+    border-radius: 10px 10px 0px 0px;
+
+    mat-icon{
+      color: var(--font-color);
+    }
+  }
+
+  .cartao-imagem {
+    width: 100%;
+    height: 10rem;
+  }
+
+  .cartao-detalhes {
+    color: var(--font-color);
+    text-align: center;
+    padding: 0.5rem;
+  }
+
+  .cartao-menu {
+    background-color: var(--terciary);
+  }
+
+}

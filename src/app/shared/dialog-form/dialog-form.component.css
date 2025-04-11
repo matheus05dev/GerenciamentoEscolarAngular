@@ -1,0 +1,9 @@
+:host {
+    width: 30rem;
+    max-height: 80vh;
+    background-color: var(--terciary);
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}

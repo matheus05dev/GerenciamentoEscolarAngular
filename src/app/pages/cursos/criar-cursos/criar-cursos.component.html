@@ -1,0 +1,28 @@
+<app-dialog-form>
+    <h2>formulário para criar curso</h2>
+    <form class="form" [formGroup]="form">
+        <div class="form-container">
+            <mat-form-field class="full-width">
+                <mat-label>Área tecnológica</mat-label>
+                <input matInput formControlName="areaTecnologica" placeholder="Ex. T.I.">
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <mat-label>Título</mat-label>
+                <input matInput formControlName="titulo" placeholder="Ex. Cybersegurança em nuvem">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Modalidade</mat-label>
+                <mat-select formControlName="modalidade" disableRipple>
+                    <mat-option value="PRESENCIAL">Presencial</mat-option>
+                    <mat-option value="SEMI_PRESENCIAL">Semi presencial</mat-option>
+                    <mat-option value="EAD">EAD</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="button-container">
+            <button class="botao-salvar" mat-fab extended (click)="salvarCurso()">Salvar<mat-icon>save</mat-icon></button>
+            <button class="botao-cancelar" mat-fab extended (click)="dialog.close()">Cancelar<mat-icon>cancel</mat-icon></button>
+        </div>
+    </form>
+
+</app-dialog-form>

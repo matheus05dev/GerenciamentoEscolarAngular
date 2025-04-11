@@ -1,0 +1,87 @@
+<app-dialog-form>
+  <h2>Formulário para criar aluno</h2>
+  <form class="form" [formGroup]="form">
+    <div class="form-container">
+      <!-- Campo Matrícula -->
+      <mat-form-field class="full-width">
+          <mat-label>Matrícula</mat-label>
+          <input matInput formControlName="matricula" placeholder="Ex. 12345678">
+      </mat-form-field>
+
+      <!-- Campo Nome -->
+      <mat-form-field class="full-width">
+          <mat-label>Nome</mat-label>
+          <input matInput formControlName="nome" placeholder="Ex. João Silva">
+      </mat-form-field>
+
+      <!-- Campo E-mail -->
+      <mat-form-field class="full-width">
+          <mat-label>E-mail</mat-label>
+          <input matInput formControlName="email" placeholder="Ex. joao@exemplo.com">
+      </mat-form-field>
+
+      <!-- Campo Telefone -->
+      <mat-form-field class="full-width">
+          <mat-label>Telefone</mat-label>
+          <input matInput formControlName="telefone" placeholder="Ex. (11) 98765-4321">
+      </mat-form-field>
+
+      <!-- Campo Curso -->
+      <mat-form-field>
+        <mat-label>Curso</mat-label>
+        <mat-select formControlName="cursoId">
+          @for (curso of cursos; track curso.id){
+            <mat-option [value]="curso.id">{{curso.titulo}}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+
+      <!-- Campo País -->
+      <mat-form-field class="full-width">
+        <mat-label>País</mat-label>
+        <input matInput formControlName="pais" placeholder="Ex. Brasil">
+      </mat-form-field>
+
+      <!-- Campo Estado -->
+      <mat-form-field class="full-width">
+          <mat-label>Estado</mat-label>
+          <input matInput formControlName="estado" placeholder="Ex. São Paulo">
+      </mat-form-field>
+
+      <!-- Campo Cidade -->
+      <mat-form-field class="full-width">
+          <mat-label>Cidade</mat-label>
+          <input matInput formControlName="cidade" placeholder="Ex. São Paulo">
+      </mat-form-field>
+
+      <!-- Campo Bairro -->
+      <mat-form-field class="full-width">
+          <mat-label>Bairro</mat-label>
+          <input matInput formControlName="bairro" placeholder="Ex. Vila Mariana">
+      </mat-form-field>
+
+      <!-- Campo CEP -->
+      <mat-form-field class="full-width">
+          <mat-label>CEP</mat-label>
+          <input matInput formControlName="cep" placeholder="Ex. 04013-010">
+      </mat-form-field>
+
+      <!-- Campo Rua -->
+      <mat-form-field class="full-width">
+          <mat-label>Rua</mat-label>
+          <input matInput formControlName="rua" placeholder="Ex. Rua Exemplo">
+      </mat-form-field>
+
+      <!-- Campo Número -->
+      <mat-form-field class="full-width">
+          <mat-label>Número</mat-label>
+          <input matInput formControlName="numero" placeholder="Ex. 123">
+      </mat-form-field>
+    </div>
+
+    <div class="button-container">
+        <button class="botao-salvar" mat-fab extended (click)="salvarAluno()">Salvar<mat-icon>save</mat-icon></button>
+        <button class="botao-cancelar" mat-fab extended (click)="dialog.close()">Cancelar<mat-icon>cancel</mat-icon></button>
+    </div>
+  </form>
+</app-dialog-form>
