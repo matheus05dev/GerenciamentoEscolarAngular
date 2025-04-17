@@ -8,5 +8,5 @@ export interface Aluno {
   email: string
   telefone: string
   endereco: Endereco;
-  imagemUrl: string
+  fotoUrl: string
 }

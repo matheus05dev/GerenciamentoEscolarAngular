@@ -50,7 +50,7 @@ export class CartaoAlunoComponent {
         next: (value) => {
           this.toast.success('Imagem salva com sucesso!' , "SUCESSO");
           console.log(value);
-          this.aluno.imagemUrl = value.imagemUrl;
+          this.aluno.fotoUrl = value.fotoUrl;
         },
         error: (err) => {
           this.toast.error(`Erro ao salvar imagem: ${err.error.error}`, "ERRO");

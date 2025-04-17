@@ -16,13 +16,13 @@
       <button mat-menu-item (click)="carregarImagem.click()">
         <mat-icon>add_photo_alternated</mat-icon>
         <span>Carregar imagem</span>
-        <input #carregarImagem type="file" (change)="salvarImagem($event)" accept="image/*" hidden>
+        <input #carregarImagem type="file" (change)="salvarImagem($event)" accept="imagem/*" hidden>
       </button>
     </mat-menu>
 
   </div>
   <img class="cartao-imagem"
-    [src]="aluno.imagemUrl"
+    [src]="aluno.fotoUrl"
     alt="cartao-detalhes">
   <div class="cartao-detalhes">
     <h2>{{aluno.nome}}</h2>

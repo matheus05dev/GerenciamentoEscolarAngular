@@ -25,6 +25,6 @@ export class AlunoService {
   }
 
   salvarImagem(id: number, form: Data): Observable<any> {
-    return this.http.post<any>(`http://localhost:8080/alunos/imagem/${id}`, form);
+    return this.http.post<any>(`http://localhost:8080/alunos/foto/${id}`, form);
   }
 }
