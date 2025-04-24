@@ -1,3 +1,18 @@
+/**
+ * Importação dos módulos e componentes necessários
+ * Component: Decorator para definir um componente Angular
+ * OnInit: Interface para inicialização do componente
+ * MatInputModule: Campos de entrada do Material Design
+ * MatSelectModule: Componentes de seleção do Material Design
+ * MatButtonModule: Componentes de botão do Material Design
+ * MatIconModule: Ícones do Material Design
+ * FormControl, FormGroup: Classes para formulários reativos
+ * Validators: Validadores de formulário
+ * FormsModule, ReactiveFormsModule: Módulos para formulários
+ * MatFormFieldModule: Campos de formulário do Material Design
+ * ToastrService: Serviço para notificações
+ * MatDialogRef: Referência ao diálogo modal
+ */
 import { Component, OnInit } from '@angular/core';
 import { DialogFormComponent } from '../../../shared/dialog-form/dialog-form.component';
 import { MatInputModule } from '@angular/material/input';
@@ -13,6 +28,14 @@ import { AlunoForm } from '../../../core/types/AlunoForm';
 import { MatIconModule } from '@angular/material/icon';
 import { CursosService } from '../../../core/services/cursos.service';
 
+/**
+ * Componente para criação de novos alunos
+ * Responsável por exibir e gerenciar o formulário de cadastro
+ * @selector 'app-criar-aluno' - Seletor CSS para usar o componente
+ * @imports - Lista de módulos necessários para o componente
+ * @templateUrl - Template HTML do componente
+ * @styleUrls - Estilos CSS do componente
+ */
 @Component({
   selector: 'app-criar-aluno',
   imports: [
@@ -29,7 +52,10 @@ import { CursosService } from '../../../core/services/cursos.service';
   styleUrls: ['./criar-aluno.component.css']
 })
 export class CriarAlunoComponent implements OnInit {
-
+  /**
+   * Objeto que representa o formulário de aluno
+   * Contém todos os campos necessários para criar um novo aluno
+   */
   aluno: AlunoForm = {
     id: 0,
     cursoId: 0,
@@ -43,7 +69,8 @@ export class CriarAlunoComponent implements OnInit {
     bairro: '',
     cep: '',
     rua: '',
-    numero: ''
+    numero: '',
+    fotoUrl: 'assets/aluno_padrao.jpg'
   }
 
   form: FormGroup = new FormGroup({
@@ -69,10 +96,19 @@ export class CriarAlunoComponent implements OnInit {
     public dialog: MatDialogRef<CriarAlunoComponent>,
   ) { }
 
+  /**
+   * Inicialização do componente
+   * Carrega os cursos disponíveis para matrícula
+   */
   ngOnInit(): void {
     this.carregarCursos();
   }
 
+  /**
+   * Carrega a lista de cursos disponíveis
+   * Faz uma chamada ao serviço para buscar os cursos
+   * Atualiza a lista de cursos no componente
+   */
   carregarCursos() {
     this.cursoService.buscarCursos().subscribe({
       next: (value) => {
@@ -105,7 +141,7 @@ export class CriarAlunoComponent implements OnInit {
       next: (value) => {
         console.log(value)
         this.toast.success('Sucesso ao criar aluno', 'Sucesso');
-        this.dialog.close("Criado");
+        this.dialog.close("criado");
       },
       error: (err) => {
         console.log(err)

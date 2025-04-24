@@ -1,11 +1,36 @@
 <header>
+  <div class="pesquisa-container">
+    <button mat-icon-button (click)="togglePesquisa()" class="pesquisa-toggle">
+      <mat-icon>search</mat-icon>
+    </button>
+    <mat-form-field appearance="outline" class="pesquisa-field" [class.expanded]="pesquisaExpandida">
+      <mat-label>Pesquisar alunos</mat-label>
+      <input matInput [(ngModel)]="termoPesquisa" (input)="onPesquisaChange()" placeholder="Digite para pesquisar...">
+      <button mat-icon-button matSuffix *ngIf="termoPesquisa" (click)="limparPesquisa()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+  </div>
   <h1>Alunos</h1>
   <button mat-fab (click)="abrirDialogCriarAlunos()">
     <mat-icon>add</mat-icon>
   </button>
 </header>
+
+
+
 <section class="cartoes">
-  @for ( aluno of alunos; track aluno.id){
+  <div class="loading-container" *ngIf="pesquisando">
+    <mat-spinner diameter="40"></mat-spinner>
+    <p>Carregando alunos...</p>
+  </div>
+
+  <div class="no-results" *ngIf="!pesquisando && alunosFiltrados.length === 0">
+    <mat-icon>search_off</mat-icon>
+    <p>Nenhum aluno encontrado para "{{termoPesquisa}}"</p>
+  </div>
+
+  @for ( aluno of alunosFiltrados; track aluno.id){
     <app-cartao-aluno [aluno]="aluno" (alunoDeletado)="BuscarAlunos()"></app-cartao-aluno>
-    }
+  }
 </section>

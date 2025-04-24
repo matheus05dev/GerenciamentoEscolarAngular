@@ -1,11 +1,34 @@
 <header>
+  <div class="pesquisa-container">
+    <button mat-icon-button (click)="togglePesquisa()" class="pesquisa-toggle">
+      <mat-icon>search</mat-icon>
+    </button>
+    <mat-form-field appearance="outline" class="pesquisa-field" [class.expanded]="pesquisaExpandida">
+      <mat-label>Pesquisar cursos</mat-label>
+      <input matInput [(ngModel)]="termoPesquisa" (input)="onPesquisaChange()" placeholder="Digite para pesquisar...">
+      <button mat-icon-button matSuffix *ngIf="termoPesquisa" (click)="limparPesquisa()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+  </div>
   <h1>Cursos</h1>
   <button mat-fab (click)="abrirDialogCriarCurso()">
     <mat-icon>add</mat-icon>
   </button>
 </header>
+
 <section class="cartoes">
-  @for ( curso of cursos; track curso.id){
+  <div class="loading-container" *ngIf="pesquisando">
+    <mat-spinner diameter="40"></mat-spinner>
+    <p>Carregando cursos...</p>
+  </div>
+
+  <div class="no-results" *ngIf="!pesquisando && cursosFiltrados.length === 0">
+    <mat-icon>search_off</mat-icon>
+    <p>Nenhum curso encontrado para "{{termoPesquisa}}"</p>
+  </div>
+  @for ( curso of cursosFiltrados; track curso.id){
     <app-cartao-curso [curso]="curso" (cursoDeletado)="BuscarCursos()"></app-cartao-curso>
-    }
+  }
 </section>
+

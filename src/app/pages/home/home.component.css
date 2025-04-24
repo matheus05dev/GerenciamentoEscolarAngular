@@ -1,0 +1,587 @@
+/* ==========================================================================
+   Estilos Gerais
+   ========================================================================== */
+
+/* Container principal da página
+   Define a largura máxima e centraliza o conteúdo */
+.home-container {
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* ==========================================================================
+   Seção Hero
+   ========================================================================== */
+
+/* Seção principal com altura mínima de 80% da viewport */
+.hero-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  margin-bottom: 4rem;
+  position: relative;
+  overflow: visible;
+  width: 100%;
+  padding: 2rem 0;
+}
+
+/* Carrossel */
+.carousel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.carousel-item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.carousel-item.active {
+  opacity: 1;
+}
+
+.carousel-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Overlay escuro sobre o carrossel */
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.65);
+  z-index: 1;
+}
+
+/* Grid de duas colunas para o conteúdo do hero */
+.hero-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  z-index: 2;
+  padding: 0 4rem;
+}
+
+/* Responsividade: Em telas menores que 768px */
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 1rem 0;
+  }
+
+  .hero-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+    padding: 0 1rem;
+  }
+
+  .hero-image {
+    margin: 0;
+    padding: 1rem;
+    min-height: 300px;
+  }
+
+  .floating-card {
+    display: none;
+  }
+}
+
+/* Responsividade: Em telas médias */
+@media (min-width: 769px) and (max-width: 1200px) {
+  .hero-content {
+    padding: 0 2rem;
+  }
+
+  .card-1 {
+    left: -10%;
+  }
+
+  .card-2 {
+    right: -10%;
+  }
+}
+
+/* Título principal com gradiente de cores */
+.hero-text .hero-title {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  line-height: 1.2;
+}
+
+/* Responsividade: Reduz o tamanho do título em telas menores */
+@media (max-width: 768px) {
+  .hero-text .hero-title {
+    font-size: 2.5rem;
+  }
+}
+
+/* Subtítulo com cor mais suave e espaçamento adequado */
+.hero-text .hero-subtitle {
+  font-size: 1.25rem;
+  color: rgba(255, 255, 255, 0.95);
+  margin-bottom: 2rem;
+  line-height: 1.6;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+/* Container dos botões com espaçamento entre eles */
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+/* Responsividade: Centraliza os botões em telas menores */
+@media (max-width: 768px) {
+  .hero-buttons {
+    justify-content: center;
+  }
+}
+
+ /* Botões do hero */
+.hero-buttons button {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.hero-buttons .primary-button {
+  background: #2196F3;
+  color: white;
+  border: none;
+  box-shadow: 0 4px 6px rgba(33, 150, 243, 0.3);
+}
+
+.hero-buttons .primary-button:hover {
+  background: #1976D2;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(33, 150, 243, 0.4);
+}
+
+.hero-buttons .accent-button {
+  background: transparent;
+  color: white;
+  border: 2px solid white;
+  box-shadow: 0 4px 6px rgba(255, 255, 255, 0.1);
+}
+
+.hero-buttons .accent-button:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(255, 255, 255, 0.2);
+}
+
+.hero-buttons mat-icon {
+  margin-right: 0.5rem;
+}
+
+/* Container da imagem com posicionamento relativo */
+.hero-image {
+  position: relative;
+  overflow: visible;
+  padding: 2rem;
+  margin: 2rem;
+  min-height: 400px;
+}
+
+/* Imagem principal com bordas arredondadas e sombra */
+.hero-image .main-image {
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+/* Efeito de zoom suave ao passar o mouse */
+.hero-image .main-image:hover {
+  transform: scale(1.02);
+}
+
+/* Cards flutuantes com animação */
+.floating-card {
+  position: absolute;
+  background: white;
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  animation: float 3s ease-in-out infinite;
+  white-space: nowrap;
+  min-width: max-content;
+  z-index: 1000;
+  width: auto;
+}
+
+/* Cor do ícone nos cards flutuantes */
+.floating-card mat-icon {
+  color: #2196F3;
+}
+
+/* Estilo do texto nos cards flutuantes */
+.floating-card span {
+  font-weight: 500;
+  color: #333;
+}
+
+/* Posicionamento do primeiro card flutuante */
+.card-1 {
+  top: 10%;
+  left: -15%;
+  animation-delay: 0s;
+}
+
+/* Posicionamento do segundo card flutuante */
+.card-2 {
+  bottom: 10%;
+  right: -15%;
+  animation-delay: 1.5s;
+}
+
+/* ==========================================================================
+   Seção de Estatísticas
+   ========================================================================== */
+
+/* Container da seção de estatísticas */
+.stats-section {
+  margin: 4rem 0;
+}
+
+/* Grid de três colunas para os cards de estatísticas */
+.stats-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+/* Responsividade: Uma coluna em telas menores */
+@media (max-width: 768px) {
+  .stats-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Cards de estatísticas com efeito de elevação */
+.stat-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  transition: transform 0.3s ease;
+}
+
+/* Efeito de elevação ao passar o mouse */
+.stat-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Ícone com gradiente de fundo */
+.stat-icon {
+  background: linear-gradient(45deg, #2196F3, #673AB7);
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Estilo do ícone dentro do card */
+.stat-icon mat-icon {
+  color: white;
+  font-size: 2rem;
+  width: 2rem;
+  height: 2rem;
+}
+
+/* Número da estatística */
+.stat-info h3 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #333;
+  margin: 0;
+}
+
+/* Texto descritivo da estatística */
+.stat-info p {
+  color: #666;
+  margin: 0;
+  font-size: 1rem;
+}
+
+/* ==========================================================================
+   Seção de Ações Rápidas
+   ========================================================================== */
+
+/* Container da seção de ações rápidas */
+.quick-actions {
+  margin: 4rem 0;
+  text-align: center;
+}
+
+/* Título da seção */
+.quick-actions h2 {
+  font-size: 2rem;
+  color: var(--font-color);
+  margin-bottom: 2rem;
+}
+
+/* Container dos botões de ação */
+.action-buttons {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+/* Estilização dos botões de ação */
+.action-buttons button {
+  background-color: var(--terciary);
+  color: var(--font-color);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.action-buttons button:hover {
+  background-color: var(--secondary);
+  transform: scale(1.1);
+}
+
+.action-buttons mat-icon {
+  color: var(--font-color);
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
+}
+
+/* Responsividade para os botões de ação */
+@media (max-width: 768px) {
+  .action-buttons {
+    gap: 0.25rem;
+  }
+
+  .action-buttons button {
+    width: 36px;
+    height: 36px;
+  }
+
+  .action-buttons mat-icon {
+    font-size: 18px;
+    width: 18px;
+    height: 18px;
+  }
+}
+
+/* ==========================================================================
+   Seção de Cursos
+   ========================================================================== */
+
+/* Container da seção de cursos */
+.courses-section {
+  margin: 4rem 0;
+}
+
+/* Título da seção */
+.courses-section h2 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+/* Container dos filtros de curso */
+.course-filter {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+/* Campos de formulário dos filtros */
+.course-filter mat-form-field {
+  flex: 1;
+  min-width: 250px;
+}
+
+/* Grid responsivo para os cards de curso */
+.course-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+/* Card de curso com efeito de elevação */
+.course-card {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+}
+
+/* Efeito de elevação ao passar o mouse */
+.course-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Container da imagem do curso */
+.course-image {
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+/* Overlay com gradiente para o texto sobre a imagem */
+.course-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1.5rem;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+  color: white;
+}
+
+/* Título do curso no overlay */
+.course-overlay h3 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+/* Área tecnológica no overlay */
+.course-overlay p {
+  margin: 0.5rem 0 0;
+  opacity: 0.9;
+}
+
+/* Detalhes do curso abaixo da imagem */
+.course-details {
+  padding: 1.5rem;
+}
+
+/* Informações do curso */
+.course-details p {
+  margin: 0 0 1rem;
+  color: #666;
+}
+
+/* Botão de detalhes ocupando toda a largura */
+.course-details button {
+  width: 100%;
+}
+
+/* ==========================================================================
+   Estados de Loading e Sem Resultados
+   ========================================================================== */
+
+/* Container do spinner de carregamento */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 2rem;
+}
+
+/* Texto de carregamento */
+.loading-container p {
+  color: #666;
+}
+
+/* Container para quando não há resultados */
+.no-results {
+  text-align: center;
+  padding: 3rem;
+  color: #666;
+}
+
+/* Ícone de nenhum resultado */
+.no-results mat-icon {
+  font-size: 3rem;
+  width: 3rem;
+  height: 3rem;
+  margin-bottom: 1rem;
+}
+
+/* ==========================================================================
+   Animações
+   ========================================================================== */
+
+/* Animação de flutuação para os cards */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* ==========================================================================
+   Responsividade
+   ========================================================================== */
+
+/* Ajustes para telas menores que 768px */
+@media (max-width: 768px) {
+  .hero-section {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-content {
+    text-align: center;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+  }
+
+  .stats-section {
+    grid-template-columns: 1fr;
+  }
+
+  .action-buttons {
+    flex-direction: column;
+  }
+}

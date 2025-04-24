@@ -1,29 +1,43 @@
+<!--
+  Componente de cartão que exibe as informações de um aluno
+  Utiliza Material Design para estilização e componentes
+-->
 <div class="cartao">
+  <!-- Cabeçalho do cartão com título do curso e menu de ações -->
   <div class="cartao-cabecalho">
     <span>{{aluno.curso.titulo}}</span>
+    <!-- Botão de menu com opções de ações -->
     <button mat-icon-button [matMenuTriggerFor]="menu" class="cartao-menu">
       <mat-icon>more_vert</mat-icon>
     </button>
+    <!-- Menu de opções para o cartão -->
     <mat-menu #menu="matMenu">
-      <button mat-menu-item  (click)="deletarAluno()">
+      <!-- Opção para deletar o aluno -->
+      <button mat-menu-item (click)="deletarAluno()">
         <mat-icon>delete_forever</mat-icon>
         <span>Apagar</span>
       </button>
+      <!-- Opção para editar dados do aluno -->
       <button mat-menu-item>
         <mat-icon>create</mat-icon>
         <span>Editar</span>
       </button>
+      <!-- Opção para carregar foto do aluno -->
       <button mat-menu-item (click)="carregarImagem.click()">
         <mat-icon>add_photo_alternated</mat-icon>
         <span>Carregar imagem</span>
+        <!-- Input oculto para seleção de arquivo -->
         <input #carregarImagem type="file" (change)="salvarImagem($event)" accept="imagem/*" hidden>
       </button>
     </mat-menu>
-
   </div>
+
+  <!-- Imagem do aluno -->
   <img class="cartao-imagem"
     [src]="aluno.fotoUrl"
     alt="cartao-detalhes">
+
+  <!-- Detalhes do aluno -->
   <div class="cartao-detalhes">
     <h2>{{aluno.nome}}</h2>
     <h3>{{aluno.matricula}}</h3>

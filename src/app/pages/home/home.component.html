@@ -1,0 +1,152 @@
+<!-- Container principal da página inicial -->
+<div class="home-container">
+  <!-- Seção do carrossel e conteúdo principal -->
+  <section class="hero-section">
+    <!-- Carrossel de imagens -->
+    <div class="carousel">
+      <!-- Slides do carrossel -->
+      <div class="carousel-item active">
+        <img src="../../../assets/images/school.jpg" alt="Educação">
+      </div>
+      <div class="carousel-item">
+        <img src="../../../assets/images/sala_de_aula.jpg" alt="Sala de Aula">
+      </div>
+      <div class="carousel-item">
+        <img src="../../../assets/images/biblioteca.jpg" alt="Biblioteca">
+      </div>
+    </div>
+
+    <!-- Conteúdo principal da seção hero -->
+    <div class="hero-content">
+      <!-- Texto e botões principais -->
+      <div class="hero-text">
+        <h1 class="hero-title">Transforme o Futuro da Educação</h1>
+        <p class="hero-subtitle">Uma plataforma completa para gerenciar sua instituição de ensino com eficiência e inovação</p>
+        <!-- Botões de ação -->
+        <div class="hero-buttons">
+          <button mat-raised-button color="primary" routerLink="/cursos" class="primary-button">
+            <mat-icon>school</mat-icon>
+            Explorar Cursos
+          </button>
+          <button mat-stroked-button color="accent" routerLink="/alunos" class="accent-button">
+            <mat-icon>group</mat-icon>
+            Gerenciar Alunos
+          </button>
+        </div>
+      </div>
+
+      <!-- Cards flutuantes com informações -->
+      <div class="hero-image">
+        <div class="floating-card card-1">
+          <mat-icon>trending_up</mat-icon>
+          <span>Crescimento Constante</span>
+        </div>
+        <div class="floating-card card-2">
+          <mat-icon>star</mat-icon>
+          <span>Excelência em Educação</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Seção de estatísticas -->
+  <section class="stats-section">
+    <div class="stats-container">
+      <!-- Card de estatística de cursos -->
+      <div class="stat-card">
+        <div class="stat-icon">
+          <mat-icon>school</mat-icon>
+        </div>
+        <div class="stat-info">
+          <h3>{{cursos.length}}</h3>
+          <p>Cursos Ativos</p>
+        </div>
+      </div>
+      <!-- Card de estatística de alunos -->
+      <div class="stat-card">
+        <div class="stat-icon">
+          <mat-icon>person</mat-icon>
+        </div>
+        <div class="stat-info">
+          <h3>{{totalAlunos}}</h3>
+          <p>Alunos Matriculados</p>
+        </div>
+      </div>
+      <!-- Card de estatística de média -->
+      <div class="stat-card">
+        <div class="stat-icon">
+          <mat-icon>class</mat-icon>
+        </div>
+        <div class="stat-info">
+          <h3>{{mediaAlunosPorCurso}}</h3>
+          <p>Média de Alunos por Curso</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Seção de cursos disponíveis -->
+  <section class="courses-section">
+    <h2>Cursos Disponíveis</h2>
+    <!-- Filtros de busca -->
+    <div class="course-filter">
+      <!-- Filtro por área tecnológica -->
+      <mat-form-field>
+        <mat-label>Filtrar por área</mat-label>
+        <mat-select [(ngModel)]="areaFiltro" (selectionChange)="filtrarCursos()">
+          <mat-option value="">Todas as áreas</mat-option>
+          @for (area of areasTecnologicas; track area) {
+            <mat-option [value]="area">{{area}}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+
+      <!-- Campo de pesquisa -->
+      <mat-form-field>
+        <mat-label>Pesquisar cursos</mat-label>
+        <input matInput [(ngModel)]="termoPesquisa" (input)="onPesquisaChange()" placeholder="Digite para pesquisar...">
+        <mat-icon matSuffix *ngIf="!termoPesquisa">search</mat-icon>
+        <button mat-icon-button matSuffix *ngIf="termoPesquisa" (click)="limparPesquisa()">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+
+      <div class="action-buttons">
+        <button mat-icon-button color="primary" routerLink="/cursos" matTooltip="Novo Curso">
+          <mat-icon>school</mat-icon>
+        </button>
+        <button mat-icon-button color="accent" routerLink="/alunos" matTooltip="Novo Aluno">
+          <mat-icon>person_add</mat-icon>
+        </button>
+      </div>
+    </div>
+
+    <div class="loading-container" *ngIf="pesquisando">
+      <mat-spinner diameter="40"></mat-spinner>
+      <p>Carregando cursos...</p>
+    </div>
+
+    <div class="no-results" *ngIf="!pesquisando && cursosFiltrados.length === 0">
+      <mat-icon>search_off</mat-icon>
+      <p>Nenhum curso encontrado para os filtros selecionados</p>
+    </div>
+
+    <div class="course-cards" *ngIf="!pesquisando && cursosFiltrados.length > 0">
+      @for (curso of cursosFiltrados; track curso.id) {
+        <div class="course-card">
+          <div class="course-image" [style.background-image]="'url(' + (curso.imagemUrl || 'assets/default-course.jpg') + ')'">
+            <div class="course-overlay">
+              <h3>{{curso.titulo}}</h3>
+              <p>{{curso.areaTecnologica}}</p>
+            </div>
+          </div>
+          <div class="course-details">
+            <p><strong>Modalidade:</strong> {{curso.modalidade}}</p>
+            <button mat-button color="primary" [routerLink]="['/cursos', curso.id]">Ver Detalhes</button>
+          </div>
+        </div>
+      }
+    </div>
+  </section>
+</div>
+

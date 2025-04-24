@@ -1,6 +1,6 @@
 :host {
-    width: 30rem;
-    max-height: 80vh;
+    width: auto;
+    max-height: auto;
     background-color: var(--terciary);
     padding: 1rem;
     display: flex;
